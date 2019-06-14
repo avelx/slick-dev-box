@@ -64,10 +64,29 @@ object Runner {
 
 
 
-      val source = db
-        .stream(q1.result)
-        .foreach(println)
+//      val source = db
+//        .stream(q1.result)
+//        .foreach(println)
 
+      val q5 = coffees.filter(_.supID === 101)
+
+      val q11 = coffees.filter(_.price < 8.0)
+      val q12 = coffees.filter(_.price > 9.0)
+
+      val unionQuery = q11 union q12
+
+      val qWithGroupBy = (for {
+        c <- coffees
+        s <- c.supplier
+      } yield (c, s)).groupBy(_._1.supID)
+
+      val q25 = qWithGroupBy.map { case (supID, css) =>
+        (supID, css)
+      }
+
+      val source = db
+              .stream(q25.result)
+              .foreach(println)
 
       Thread.sleep(2000)
       //println(setupFuture)
