@@ -1,7 +1,7 @@
 package data
 
-import slick.jdbc.H2Profile.api._
-
+//import slick.jdbc.H2Profile.api._
+import slick.jdbc.MySQLProfile.api._
 
 object Schema {
 

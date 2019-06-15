@@ -1,11 +1,13 @@
 package com.avelimited.slick.demo
 
-import slick.jdbc.H2Profile.api._
+//import slick.jdbc.H2Profile.api._
+import slick.driver.{JdbcProfile, MySQLDriver}
+import slick.jdbc.MySQLProfile.api._
 
 import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
-import scala.util.{Failure, Success, Try}
+import scala.util.{Failure, Success}
 
 object Runner {
 
@@ -14,7 +16,8 @@ object Runner {
     import data.Schema._
     import data.Db._
 
-    val db = Database.forConfig("h2mem1")
+    val driver: JdbcProfile = MySQLDriver
+    val db = Database.forConfig("database")
     try {
 
       val setupFuture = db.run(setup)
@@ -80,12 +83,12 @@ object Runner {
         s <- c.supplier
       } yield (c, s)).groupBy(_._1.supID)
 
-      val q25 = qWithGroupBy.map { case (supID, css) =>
-        (supID, css)
-      }
+//      val q25 = qWithGroupBy.map { case (supID, css) =>
+//        (supID, css)
+//      }
 
       val source = db
-              .stream(q25.result)
+              .stream(q1.result)
               .foreach(println)
 
       Thread.sleep(2000)

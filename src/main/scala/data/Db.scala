@@ -1,7 +1,8 @@
 package data
 
 import data.Schema.{coffees, suppliers}
-import slick.jdbc.H2Profile.api._
+//import slick.jdbc.H2Profile.api._
+import slick.jdbc.MySQLProfile.api._
 
 
 object Db {
