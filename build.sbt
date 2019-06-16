@@ -14,4 +14,4 @@ libraryDependencies ++= Seq(
 //libraryDependencies += "com.h2database" % "h2" % "1.4.192"
 
 // MySQL specific
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
+libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.11"

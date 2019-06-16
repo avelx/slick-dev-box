@@ -16,8 +16,10 @@ object Runner {
     import data.Schema._
     import data.Db._
 
-    val driver: JdbcProfile = MySQLDriver
-    val db = Database.forConfig("database")
+    val db = Database.forURL("jdbc:mysql://127.0.0.1:3306/slick",
+      "root",
+      "123123",
+      driver = "com.mysql.jdbc.Driver")
     try {
 
       val setupFuture = db.run(setup)

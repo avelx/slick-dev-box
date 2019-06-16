@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  custom-app:
+    image: sbt-app
+    build: .
+    volumes:
+      - /Users/pavel/Sources/slick-dev-box:/home
+
+  mysql-db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123123
+    volumes:
+      - mysql-db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+
+volumes: 
+    mysql-db:
+    source:
