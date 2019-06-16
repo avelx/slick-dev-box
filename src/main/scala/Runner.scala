@@ -16,7 +16,7 @@ object Runner {
     import data.Schema._
     import data.Db._
 
-    val db = Database.forURL("jdbc:mysql://127.0.0.1:3306/slick",
+    val db = Database.forURL("jdbc:mysql://slick-dev-box_mysql-db_1:3306/slick",
       "root",
       "123123",
       driver = "com.mysql.jdbc.Driver")
