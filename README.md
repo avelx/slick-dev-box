@@ -3,6 +3,9 @@ Playing with slick
 
 # docker
 
+
+Option 1
+
 start && rebuild local image:
     
     docker-compose up --build -d
@@ -14,3 +17,5 @@ stop:
         
     docker-compose down -v // to drop relevan volus
 
+Option 2.
+    run up.sh / down.sh
