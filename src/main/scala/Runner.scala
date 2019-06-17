@@ -16,10 +16,7 @@ object Runner {
     import data.Schema._
     import data.Db._
 
-    val db = Database.forURL("jdbc:mysql://slick-dev-box_mysql-db_1:3306/slick",
-      "root",
-      "123123",
-      driver = "com.mysql.jdbc.Driver")
+    val db = Database.forConfig("mysql")
     try {
 
       val setupFuture = db.run(setup)
